@@ -1,1 +1,24 @@
-<h1>{{name}}</h1>
+<section id="tasks">
+    <header>
+        <h1>{{name}}</h1>
+    <menu>
+        <button (click)="onAddTask()">
+            Add tasks
+        </button>
+    </menu>
+    </header>
+    @if (createTask) {
+        <app-create-task/>
+    }@else {
+
+        <ul >
+            @for (task of selectedTasks; track task.id) {
+    
+                <li>
+                    <app-task [taskdata]="task" (complete)="onCompletedTask($event)"/>
+                </li>
+            }
+        </ul>
+    }
+
+</section>
