@@ -8,14 +8,14 @@
     </menu>
     </header>
     @if (createTask) {
-        <app-create-task/>
+        <app-create-task  (cancelEvent)="onCancelTask()"  [userId]="userid"/>
     }@else {
 
         <ul >
             @for (task of selectedTasks; track task.id) {
     
                 <li>
-                    <app-task [taskdata]="task" (complete)="onCompletedTask($event)"/>
+                    <app-task [taskdata]="task"/>
                 </li>
             }
         </ul>
